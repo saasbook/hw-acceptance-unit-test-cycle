@@ -92,12 +92,12 @@ the [ESaaS screencast](http://vimeo.com/34754907) for step-by-step instructions 
 
 Hint: To cover the parts not written in this assignment, add in your Cucumber tests from HW3 along with those step definitions.  Your SimpleCov report will reveal what hasn’t been tested yet. You could also include rspec tests to show that the updates (title, director, etc...) work and that the destroy and create movie objects work.
 
-**TURN-IN:**
-
+**Submissijon:**
+For CSCI 420/602, commit all your changes to your personal GitHub repo. Make sure you can find the following online:
 + Cucumber feature file (if different from the one provided) 
 + Cucumber step definitions (i.e., contents of your features/ directory)
 + RSpec tests (i.e., contents of spec/ directory) 
 + SimpleCov report files showing 90% or greater coverage for your models and controllers
-+ The URI of your deployed app on Heroku that passes all the scenarios (later in the semester, 
-we'll show how to run Cucumber scenarios directly against your deployed app, not just your local copy)
++ The URI of your deployed app on Heroku that passes all the scenarios
 + Any files you modified (i.e. app/, config/routes.rb, db/migrate/, etc.)
+On CitLearn, submit your Heroku URL and your GitHub URL.
