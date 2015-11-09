@@ -58,7 +58,7 @@ the creation of:
 
 + a RESTful route for Find Similar Movies 
 (HINT: use the 'match' syntax for routes as suggested in "Non-Resource-Based Routes" 
-in Section 4.1 of ESaaS). You can also use the key :as to specify a name to generate helpers (i.e. search_directors_path) https://blog.engineyard.com/2010/the-lowdown-on-routes-in-rails-3) Note: you probably won’t test this directly in rspec, but a line in Cucumber or rspec will fail if the route is not correct.
+in Section 4.1 of ESaaS). You can also use the key :as to specify a name to generate helpers (i.e. search_directors_path) http://guides.rubyonrails.org/routing.html Note: you probably won’t test this directly in rspec, but a line in Cucumber or rspec will fail if the route is not correct.
 
 + a controller method to receive the click
 on "Find With Same Director", and grab the id (for example) of the movie
