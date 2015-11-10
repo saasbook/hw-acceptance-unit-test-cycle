@@ -5,7 +5,7 @@ In this assignment you will use a combination of Behavior-Driven Design (BDD) an
 
 To get the initial RottenPotatoes code please clone this bdd-tdd-cycle GitHub repo as follows:
 
-git clone https://github.com/saasbook/bdd-tdd-cycle
+git clone https://github.com/saasbook/hw-bdd-tdd-cycle
 
 Please now follow the instructions below to get setup:
 ----
