@@ -101,5 +101,6 @@ For CSCI 420/602, commit all your changes to your personal GitHub repo. Make sur
 + RSpec tests (i.e., contents of spec/ directory) 
 + SimpleCov report files showing 90% or greater coverage for your models and controllers
 + The URI of your deployed app on Heroku that passes all the scenarios
++ Make sure that on Heroku you apply the new database migrations!
 + Any files you modified (i.e. app/, config/routes.rb, db/migrate/, etc.)
 On CitLearn, submit your Heroku URL and your GitHub URL.
