@@ -72,27 +72,29 @@ It's up to you to
 decide whether you want to handle the sad path of "no director" in the
 controller method or in the model method, but you must provide a test
 for whichever one you do. Remember to include the line 
-`require 'spec_helper'` at the top of your *_spec.rb files.
+`require 'rails_helper'` at the top of your *_spec.rb files.
 
 We want you to report your code coverage as well.
 
-Add the following lines to
-the TOP of spec/spec_helper.rb and features/support/env.rb:
+Add `gem 'simplecov', :require => false` to the test group of your gemfile, then run `bundle install --without production`.
+
+Next, add the following lines to the TOP of spec/rails_helper.rb and features/support/env.rb:
 
 ```ruby
 require 'simplecov'
 SimpleCov.start 'rails'
 ```
 
-Now when you run `rake spec` or `rake cucumber`, SimpleCov will generate a report in a directory named
+Now when you run `rspec` or `cucumber`, SimpleCov will generate a report in a directory named
 `coverage/`. Since both RSpec and Cucumber are so widely used, SimpleCov
 can intelligently merge the results, so running the tests for Rspec does
-not overwrite the coverage results from SimpleCov and vice versa. See
-the [ESaaS screencast](http://vimeo.com/34754907) for step-by-step instructions on setting up SimpleCov.
+not overwrite the coverage results from SimpleCov and vice versa.
 
-Hint: To cover the parts not written in this assignment, add in your Cucumber tests from HW3 along with those step definitions.  Your SimpleCov report will reveal what hasn’t been tested yet. You could also include rspec tests to show that the updates (title, director, etc...) work and that the destroy and create movie objects work.
+To see the results in Cloud9, open /coverage/index.html. You will see the code, but click the Run button at the top. This will spin up a web server with a link in the console you can click to see your coverage report.
 
-**Submissijon:**
+Improve your test coverage by adding unit tests and/or Cucumber features for untested or undertested code. Specifically, you can write unit tests for the `update`, `destroy`, and `create` controller methods, and perhaps bring in cucumber scenarios (and step definitions) from previous assignments.
+
+**Submission:**
 For CSCI 420/602, commit all your changes to your personal GitHub repo. Make sure you can find the following online:
 + Cucumber feature file (if different from the one provided) 
 + Cucumber step definitions (i.e., contents of your features/ directory)
