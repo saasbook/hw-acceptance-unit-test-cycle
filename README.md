@@ -95,12 +95,4 @@ To see the results in Cloud9, open /coverage/index.html. You will see the code, 
 Improve your test coverage by adding unit tests and/or Cucumber features for untested or undertested code. Specifically, you can write unit tests for the `update`, `destroy`, and `create` controller methods, and perhaps bring in cucumber scenarios (and step definitions) from previous assignments.
 
 **Submission:**
-For CSCI 420/602, commit all your changes to your personal GitHub repo. Make sure you can find the following online:
-+ Cucumber feature file (if different from the one provided) 
-+ Cucumber step definitions (i.e., contents of your features/ directory)
-+ RSpec tests (i.e., contents of spec/ directory) 
-+ SimpleCov report files showing 90% or greater coverage for your models and controllers
-+ The URI of your deployed app on Heroku that passes all the scenarios
-+ Make sure that on Heroku you apply the new database migrations!
-+ Any files you modified (i.e. app/, config/routes.rb, db/migrate/, etc.)
-On CitLearn, submit your Heroku URL and your GitHub URL.
+Follow instructions specific to your course offering.
