@@ -3,14 +3,13 @@ BDD, TDD Cycle
 
 In this assignment you will use a combination of Behavior-Driven Design (BDD) and Test-Driven Development (TDD) with the Cucumber and RSpec tools to add a "find movies with same director" feature to RottenPotatoes, and deploy the resulting app on Heroku.
 
-To get the initial RottenPotatoes code please clone this bdd-tdd-cycle GitHub repo as follows:
+To get the initial RottenPotatoes code please fork this bdd-tdd-cycle repo to your GitHub account with the Fork button on GitHub. Then copy the clone URL from your repo, and execute the following command in the top level of your Cloud9 workspace:
 
-git clone https://github.com/saasbook/hw-bdd-tdd-cycle
+`git clone <your clone URL goes here>`
 
-Please now follow the instructions below to get setup:
+Next, follow the instructions below to get setup:
 ----
-
-1) Change into the rottenpotatoes directory: cd bdd-tdd-cycle/rottenpotatoes  
+1) Change into the rottenpotatoes directory: cd hw-bdd-tdd-cycle/rottenpotatoes  
 2) Run bundle install --without production to make sure all gems are properly installed.  
 3) Run bundle exec rake db:migrate to apply database migrations.  
 4) Finally, run these commands to set up the Cucumber directories (under features/) and RSpec directories (under spec/) if they don't already exist, allowing overwrite of any existing files:
@@ -20,7 +19,7 @@ rails generate cucumber:install capybara
 rails generate cucumber_rails_training_wheels:install
 rails generate rspec:install
 ```
-5) You can double-check if everything was installed by running the tasks `rake spec` and `rake cucumber`.  
+5) You can double-check if everything was installed by running the tasks `rspec` and `cucumber`.  
 
 Since presumably you have no features or specs yet, both tasks should execute correctly reporting that there are zero tests to run. Depending on your version of rspec, it may also display a message stating that it was not able to find any _spec.rb files.
 
@@ -28,7 +27,9 @@ Since presumably you have no features or specs yet, both tasks should execute co
 
 Create and apply a migration that adds the Director field to the movies table. 
 The director field should be a string containing the name of the movie’s director. 
-HINT: use the `add_column` method of `ActiveRecord::Migration` to do this.  
+HINT: use the [`add_column` method of `ActiveRecord::Migration`](http://apidock.com/rails/ActiveRecord/ConnectionAdapters/SchemaStatements/add_column) to do this. 
+
+Remember to add `:director` to the list of movie attributes in the `def movie_params` method in `movies_controller.rb`.
 
 Remember that once the migration is applied, you also have to do `rake db:test:prepare` 
 to load the new post-migration schema into the test database!
@@ -57,7 +58,7 @@ the creation of:
 
 + a RESTful route for Find Similar Movies 
 (HINT: use the 'match' syntax for routes as suggested in "Non-Resource-Based Routes" 
-in Section 4.1 of ESaaS) 
+in Section 4.1 of ESaaS). You can also use the key :as to specify a name to generate helpers (i.e. search_directors_path) http://guides.rubyonrails.org/routing.html Note: you probably won’t test this directly in rspec, but a line in Cucumber or rspec will fail if the route is not correct.
 
 + a controller method to receive the click
 on "Find With Same Director", and grab the id (for example) of the movie
@@ -65,36 +66,33 @@ that is the subject of the match (i.e. the one we're trying to find
 movies similar to) 
 
 + a model method in the Movie model to find movies
-whose director matches that of the current movie 
+whose director matches that of the current movie. Note: This implies that you should write at least 2 specs for your controller: 1) When the specified movie has a director, it should...  2) When the specified movie has no director, it should ... and 2 for your model: 1) it should find movies by the same director and 2) it should not find movies by different directors.
 
 It's up to you to
 decide whether you want to handle the sad path of "no director" in the
 controller method or in the model method, but you must provide a test
 for whichever one you do. Remember to include the line 
-`require 'spec_helper'` at the top of your *_spec.rb files.
+`require 'rails_helper'` at the top of your *_spec.rb files.
 
 We want you to report your code coverage as well.
 
-Add the following lines to
-the TOP of spec/spec_helper.rb and features/support/env.rb:
+Add `gem 'simplecov', :require => false` to the test group of your gemfile, then run `bundle install --without production`.
+
+Next, add the following lines to the TOP of spec/rails_helper.rb and features/support/env.rb:
 
 ```ruby
 require 'simplecov'
 SimpleCov.start 'rails'
 ```
 
-Now when you run `rake spec` or `rake cucumber`, SimpleCov will generate a report in a directory named
+Now when you run `rspec` or `cucumber`, SimpleCov will generate a report in a directory named
 `coverage/`. Since both RSpec and Cucumber are so widely used, SimpleCov
 can intelligently merge the results, so running the tests for Rspec does
-not overwrite the coverage results from SimpleCov and vice versa. See
-the [ESaaS screencast](http://vimeo.com/34754907) for step-by-step instructions on setting up SimpleCov.
+not overwrite the coverage results from SimpleCov and vice versa.
 
-**TURN-IN:**
+To see the results in Cloud9, open /coverage/index.html. You will see the code, but click the Run button at the top. This will spin up a web server with a link in the console you can click to see your coverage report.
 
-+ Cucumber feature file (if different from the one provided) 
-+ Cucumber step definitions (i.e., contents of your features/ directory)
-+ RSpec tests (i.e., contents of spec/ directory) 
-+ SimpleCov report files showing 90% or greater coverage for your models and controllers
-+ The URI of your deployed app on Heroku that passes all the scenarios (later in the semester, 
-we'll show how to run Cucumber scenarios directly against your deployed app, not just your local copy)
-+ Any files you modified (i.e. app/, config/routes.rb, db/migrate/, etc.)
+Improve your test coverage by adding unit tests and/or Cucumber features for untested or undertested code. Specifically, you can write unit tests for the `update`, `destroy`, and `create` controller methods, and perhaps bring in cucumber scenarios (and step definitions) from previous assignments.
+
+**Submission:**
+Follow the submission instructions from your professor.
