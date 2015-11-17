@@ -95,4 +95,19 @@ To see the results in Cloud9, open /coverage/index.html. You will see the code, 
 Improve your test coverage by adding unit tests and/or Cucumber features for untested or undertested code. Specifically, you can write unit tests for the `update`, `destroy`, and `create` controller methods, and perhaps bring in cucumber scenarios (and step definitions) from previous assignments.
 
 **Submission:**
-Follow the submission instructions from your professor.
+
+Here are the instructions for submitting HW4. Submit a zip file with various directories of your app:
+
+* app/
+* config/
+* db/migrate
+* features/
+* spec/
+* Gemfile
+Gemfile.lock
+
+If you modified any other files, please include them too. If you are on a *nix based system, navigate to the root directory for HW4 and run
+
+```zip hw4.zip app/ config/ db/migrate features/ spec/ Gemfile Gemfile.lock```
+
+This will create the file hw4.zip, which you will submit.
