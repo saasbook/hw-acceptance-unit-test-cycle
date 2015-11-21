@@ -3,9 +3,9 @@ BDD, TDD Cycle
 
 In this assignment you will use a combination of Behavior-Driven Design (BDD) and Test-Driven Development (TDD) with the Cucumber and RSpec tools to add a "find movies with same director" feature to RottenPotatoes, and deploy the resulting app on Heroku.
 
-To get the initial RottenPotatoes code please fork this bdd-tdd-cycle repo to your GitHub account with the Fork button on GitHub. Then copy the clone URL from your repo, and execute the following command in the top level of your Cloud9 workspace:
+To get the initial RottenPotatoes code please clone this bdd-tdd-cycle repo. Execute the following command in the top level of your Cloud9 workspace:
 
-`git clone <your clone URL goes here>`
+`git clone https://github.com/saasbook/hw-bdd-tdd-cycle`
 
 Next, follow the instructions below to get setup:
 ----
