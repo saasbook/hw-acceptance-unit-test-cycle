@@ -863,3 +863,541 @@ Started GET "/assets/jquery.self.js?body=1" for ::1 at 2015-07-28 12:40:07 -0700
 
 
 Started GET "/assets/jquery_ujs.self.js?body=1" for ::1 at 2015-07-28 12:40:07 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddDirectorToMoviesTable (20151128123332)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "movies_tables" ADD "director" varchar[0m
+SQLite3::SQLException: no such table: movies_tables: ALTER TABLE "movies_tables" ADD "director" varchar
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddDirectorToMoviesTable (20151128123332)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "movies" ADD "director" varchar[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151128123332"]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (8.6ms)[0m  [1mCREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "rating" varchar(255), "description" text, "release_date" datetime, "created_at" datetime, "updated_at" datetime, "director" varchar) [0m
+  [1m[35m (9.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (11.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (7.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151128123332')
+  [1m[36m (7.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20111119180638')[0m
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2015-11-28 13:57:32 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-28 13:57:57 +0100
+
+
+Started GET "/movies" for 127.0.0.1 at 2015-11-28 13:57:57 +0100
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (23.2ms)
+Completed 200 OK in 196ms (Views: 159.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 13:57:58 +0100
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 13:57:58 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 13:57:58 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 13:57:58 +0100
+
+
+Started GET "/movies/4" for 127.0.0.1 at 2015-11-28 13:58:01 +0100
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered movies/show.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 23ms (Views: 17.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 13:58:01 +0100
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 13:58:01 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 13:58:01 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 13:58:01 +0100
+
+
+Started GET "/movies/4/edit" for 127.0.0.1 at 2015-11-28 13:58:03 +0100
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered movies/edit.html.haml within layouts/application (30.3ms)
+Completed 200 OK in 50ms (Views: 48.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 13:58:04 +0100
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 13:58:04 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 13:58:04 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 13:58:04 +0100
+
+
+Started GET "/movies/4/edit" for 127.0.0.1 at 2015-11-28 13:59:16 +0100
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered movies/edit.html.haml within layouts/application (25.4ms)
+Completed 200 OK in 63ms (Views: 61.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 13:59:17 +0100
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 13:59:17 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 13:59:17 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 13:59:17 +0100
+
+
+Started GET "/movies/4" for 127.0.0.1 at 2015-11-28 14:19:50 +0100
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mMovie Load (0.9ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered movies/show.html.haml within layouts/application (9.8ms)
+Completed 200 OK in 56ms (Views: 37.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 14:19:51 +0100
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 14:19:51 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 14:19:51 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 14:19:51 +0100
+
+
+Started GET "/similar_movies/4" for 127.0.0.1 at 2015-11-28 14:19:56 +0100
+
+AbstractController::ActionNotFound (The action 'similar_movies' could not be found for MoviesController):
+  actionpack (4.2.1) lib/abstract_controller/base.rb:132:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/aclapinpepin/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/aclapinpepin/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/aclapinpepin/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.5ms)
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT  "movies".* FROM "movies"  ORDER BY "movies"."id" DESC LIMIT 1[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  ORDER BY "movies"."id" DESC LIMIT 1
+  [1m[36mMovie Load (0.6ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" IS NULL[0m
+  [1m[35mMovie Load (0.6ms)[0m  SELECT  "movies".* FROM "movies"  ORDER BY "movies"."id" ASC LIMIT 1
+  [1m[36mMovie Load (0.6ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "bob"]]
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT  "movies".* FROM "movies"  ORDER BY "movies"."id" ASC LIMIT 1[0m
+  [1m[35mMovie Load (0.8ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."director" IS NULL
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "movies" WHERE "movies"."director" IS NULL[0m
+  [1m[35mMovie Load (1.2ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."director" IS NULL
+
+
+Started GET "/movies/4" for 127.0.0.1 at 2015-11-28 17:35:30 +0100
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered movies/show.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 28ms (Views: 21.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 17:35:30 +0100
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:35:30 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:35:30 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:35:30 +0100
+
+
+Started GET "/similar_movies/4" for 127.0.0.1 at 2015-11-28 17:35:32 +0100
+Processing by MoviesController#similar_movies as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 4]]
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms)
+
+NoMethodError (undefined method `empty?' for nil:NilClass):
+  app/controllers/movies_controller.rb:66:in `similar_movies'
+
+
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.0ms)
+
+
+Started GET "/similar_movies/4" for 127.0.0.1 at 2015-11-28 17:36:02 +0100
+Processing by MoviesController#similar_movies as HTML
+  Parameters: {"id"=>"4"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `pry' for #<Binding:0x007f9fa80c9dc0>):
+  app/controllers/movies_controller.rb:65:in `similar_movies'
+
+
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.1ms)
+
+
+Started GET "/similar_movies/4" for 127.0.0.1 at 2015-11-28 17:36:13 +0100
+Processing by MoviesController#similar_movies as HTML
+  Parameters: {"id"=>"4"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `pry' for #<Binding:0x007f9fb151f420>):
+  app/controllers/movies_controller.rb:65:in `similar_movies'
+
+
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.9ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (24.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-28 17:36:57 +0100
+
+
+Started GET "/movies" for 127.0.0.1 at 2015-11-28 17:36:57 +0100
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')
+  Rendered movies/index.html.haml within layouts/application (13.8ms)
+Completed 200 OK in 27ms (Views: 24.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 17:36:57 +0100
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:36:57 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:36:57 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:36:57 +0100
+
+
+Started GET "/movies/5" for 127.0.0.1 at 2015-11-28 17:37:01 +0100
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered movies/show.html.haml within layouts/application (2.2ms)
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:37:01 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:37:01 +0100
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 17:37:01 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:37:01 +0100
+
+
+Started GET "/similar_movies/5" for 127.0.0.1 at 2015-11-28 17:37:07 +0100
+Processing by MoviesController#similar_movies as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 5]]
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms)
+
+NoMethodError (undefined method `empty?' for nil:NilClass):
+  app/controllers/movies_controller.rb:66:in `similar_movies'
+
+
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (25.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-28 17:37:40 +0100
+
+
+Started GET "/movies" for 127.0.0.1 at 2015-11-28 17:37:40 +0100
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (23.0ms)
+Completed 200 OK in 261ms (Views: 223.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 17:37:41 +0100
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:37:41 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:37:41 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:37:41 +0100
+
+
+Started GET "/movies/3" for 127.0.0.1 at 2015-11-28 17:37:44 +0100
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered movies/show.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 23ms (Views: 17.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 17:37:44 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:37:44 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:37:44 +0100
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:37:44 +0100
+
+
+Started GET "/similar_movies/3" for 127.0.0.1 at 2015-11-28 17:37:46 +0100
+Processing by MoviesController#similar_movies as HTML
+  Parameters: {"id"=>"3"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `pry' for #<Binding:0x00000002a32c88>):
+  app/controllers/movies_controller.rb:65:in `similar_movies'
+
+
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.6ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (29.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-28 17:38:40 +0100
+
+
+Started GET "/movies" for 127.0.0.1 at 2015-11-28 17:38:40 +0100
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.8ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (40.4ms)
+Completed 200 OK in 256ms (Views: 196.5ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 17:38:41 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:38:41 +0100
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:38:41 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:38:41 +0100
+
+
+Started GET "/movies/1" for 127.0.0.1 at 2015-11-28 17:38:43 +0100
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered movies/show.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 22ms (Views: 15.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 17:38:44 +0100
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:38:44 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:38:44 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:38:44 +0100
+
+
+Started GET "/similar_movies/1" for 127.0.0.1 at 2015-11-28 17:38:45 +0100
+Processing by MoviesController#similar_movies as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", "1"]]
+Completed 500 Internal Server Error in 31285ms (ActiveRecord: 0.4ms)
+
+NoMethodError (undefined method `empty?' for nil:NilClass):
+  app/controllers/movies_controller.rb:67:in `similar_movies'
+
+
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (24.8ms)
+
+
+Started GET "/similar_movies/1" for 127.0.0.1 at 2015-11-28 17:40:20 +0100
+Processing by MoviesController#similar_movies as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", "1"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 8824ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-28 17:40:29 +0100
+
+
+Started GET "/movies" for 127.0.0.1 at 2015-11-28 17:40:29 +0100
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.6ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (11.3ms)
+Completed 200 OK in 23ms (Views: 22.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-11-28 17:40:30 +0100
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:40:30 +0100
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:40:30 +0100
+
+
+Started GET "/assets/jquery.self.js?body=1" for 127.0.0.1 at 2015-11-28 17:40:30 +0100
+
+
+Started GET "/coverage" for 127.0.0.1 at 2015-11-28 17:49:39 +0100
+
+ActionController::RoutingError (No route matches [GET] "/coverage"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/aclapinpepin/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/aclapinpepin/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/aclapinpepin/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.6ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (44.0ms)
+
+
+Started GET "/coverage/index.html" for 127.0.0.1 at 2015-11-28 17:50:15 +0100
+
+ActionController::RoutingError (No route matches [GET] "/coverage/index.html"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/aclapinpepin/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/aclapinpepin/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/aclapinpepin/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.6ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/aclapinpepin/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (45.8ms)
