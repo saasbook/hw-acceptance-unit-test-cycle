@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe MoviesController do
+describe MoviesController, type: :controller do
   describe "#director" do
     context "When the specified movie has a director" do
       it "should find movies with the same director" do

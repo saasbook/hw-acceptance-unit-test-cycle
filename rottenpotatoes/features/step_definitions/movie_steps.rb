@@ -4,9 +4,8 @@ Given /the following movies exist/ do |movies_table|
   end
 end
 
-Then /the director of "(.*)" should be "(.*)"/ do |movie, director|
-  step %Q{I should see "#{movie}"}
-  step %Q{I should see "#{director}"}
+Then /the director of "([^"]*)" should be "([^"]*)"/ do |title, director|
+  expect(Movie.find_by(title: title).director).to eq director
 end
 
 Then /I should( not)? see the following movies: (.*)/ do |notsee, movies|
