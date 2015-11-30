@@ -919,3 +919,6 @@ Migrating to AddDirectorToMovies (20151120205836)
   [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
   [1m[35m (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151120205836')
   [1m[36m (2.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20111119180638')[0m
+
+
+Started GET "/assets/rails.png" for ::1 at 2015-11-30 13:09:54 -0700
