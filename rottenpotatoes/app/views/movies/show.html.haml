@@ -15,5 +15,6 @@
 %p#description= @movie.description
 
 = link_to 'Edit', edit_movie_path(@movie)
+= link_to 'Find Movies With Same Director', search_director_path(@movie.id)
 = button_to 'Delete', movie_path(@movie), :method => :delete, :confirm => 'Are you sure?'
 = link_to 'Back to movie list', movies_path
