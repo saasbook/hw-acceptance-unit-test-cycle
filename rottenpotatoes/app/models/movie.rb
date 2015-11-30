@@ -4,8 +4,9 @@ class Movie < ActiveRecord::Base
     %w(G PG PG-13 NC-17 R)
   end
 
-  def similar_movies
-  	Movie.where("director =?", self.director)
+  def self.search_director(id)
+  	Movie.find(id).director
+  	self.where(director: Movie.find(id).director)
   end
 
 end

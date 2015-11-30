@@ -21,7 +21,8 @@
         null,
         null,
         1,
-        2,
+        0,
+        0,
         null,
         null,
         null
@@ -90,6 +91,15 @@
         0,
         null,
         null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
         null
       ],
       "/Users/jbunny/dev/hw-bdd-tdd-cycle/rottenpotatoes/app/controllers/application_controller.rb": [
@@ -98,7 +108,7 @@
         null
       ]
     },
-    "timestamp": 1448915169
+    "timestamp": 1448922453
   },
   "Cucumber Features": {
     "coverage": {
@@ -110,7 +120,8 @@
         null,
         null,
         1,
-        0,
+        1,
+        1,
         null,
         null,
         null
@@ -208,6 +219,6 @@
         null
       ]
     },
-    "timestamp": 1448917757
+    "timestamp": 1448921800
   }
 }
