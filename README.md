@@ -108,6 +108,18 @@ Gemfile.lock
 
 If you modified any other files, please include them too. If you are on a *nix based system, navigate to the root directory for HW4 and run
 
-```zip -r hw4.zip app/ config/ db/migrate features/ spec/ Gemfile Gemfile.lock```
+```zip -r hw4.zip hw4/app/ hw4/config/ hw4/db/migrate hw4/features/ hw4/spec/ hw4/Gemfile hw4/Gemfile.lock```
 
 This will create the file hw4.zip, which you will submit.
+
+IMPORTANT NOTE: Your submission must be zipped inside a hw folder so that it looks like so:
+
+```
+$ tree
+.
+└── hw4
+    ├── Gemfile
+    ├── Gemfile.lock
+    ├── app
+    ...
+```
