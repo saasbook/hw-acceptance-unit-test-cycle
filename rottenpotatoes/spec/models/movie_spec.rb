@@ -16,5 +16,12 @@ RSpec.describe Movie do
       expect(Movie.find_movies_with_same_director(@movie1)).not_to include(@movie3)
     end
   end
+
+  describe "#self.all_ratings" do
+    it "returns all the ratings available" do
+      ratings = %W(G PG PG-13 NC-17 R)
+      expect(Movie.all_ratings).to eq(ratings)
+    end
+  end
 end
 
