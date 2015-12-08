@@ -4,7 +4,7 @@ movie:
   rating: G
   description: A long boring movie
   director: Bob Lepine
-  release_date: 1977-02-22
+  release_date: 2015-02-22
 
 movie_2:
   id: 2
@@ -12,7 +12,7 @@ movie_2:
   rating: G
   description: A long fine movie
   director: Bob Lepine
-  release_date: 1978-02-22
+  release_date: 2015-02-22
 
 movie_no_director:
   id: 3
@@ -20,7 +20,7 @@ movie_no_director:
   rating: G
   description: A long exciting movie
   director:
-  release_date: 1977-03-22
+  release_date: 2015-03-22
 
 movie_other_director:
   id: 4
@@ -28,12 +28,13 @@ movie_other_director:
   rating: G
   description: A long exciting movie
   director: Other Guy
-  release_date: 1977-03-22
+  release_date: 2015-03-22
 
 movie_no_id:
+  id:
   title: This little one
   rating: G
   description: A long boring movie
-  director: Bob Lepine
-  release_date: 1977-02-22
+  director: Bob Gratton
+  release_date: 2015-02-22
 

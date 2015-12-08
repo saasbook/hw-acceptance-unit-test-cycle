@@ -3,22 +3,11 @@ require 'rails_helper'
 RSpec.describe Movie do
   describe "#find_movies_with_same_director" do
     fixtures :movies
-    let('movie1') { movies :movie }
-    let('movie2') { movies :movie_2 }
-    let('movie3') { movies :movie_other_director }
-
-    # before(:each) do
-    #   movie1 = movies :movie
-    #   movie2 = movies :movie_2
-    #   movie3 = movies :movie_other_director
-    # end
+    let('movie1') { movies(:movie) }
+    let('movie2') { movies(:movie_2) }
+    let('movie3') { movies(:movie_other_director) }
 
     it "should return movies with the same directors" do
-      movie4 = double(Movie)
-      binding.pry
-      movie1 = movies :movie
-      movie2 = movies :movie_2
-      movie3 = movies :movie_other_director
       expect(Movie.find_movies_with_same_director(movie1)).to eq([movie1, movie2])
     end
 
