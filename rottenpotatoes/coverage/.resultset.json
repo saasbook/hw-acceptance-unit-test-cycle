@@ -105,7 +105,7 @@
         null
       ]
     },
-    "timestamp": 1449335538
+    "timestamp": 1449605097
   },
   "RSpec": {
     "coverage": {
@@ -117,7 +117,7 @@
         1,
         null,
         1,
-        0,
+        2,
         null,
         null
       ],
@@ -204,15 +204,15 @@
       "/home/aclapinpepin/Dropbox/edX/CS169/hw-bdd-tdd-cycle/rottenpotatoes/app/models/movie.rb": [
         1,
         1,
-        0,
+        1,
         null,
         null,
         1,
-        2,
+        4,
         null,
         null
       ]
     },
-    "timestamp": 1449526902
+    "timestamp": 1449604766
   }
 }
