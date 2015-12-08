@@ -1,0 +1,8 @@
+%h2 Movies directed by #{@movie.director}
+
+%ul#details
+  - @similar_movies.each do |movie|
+    %li
+    = link_to movie.title, movie_path(movie)
+
+= link_to 'Back to movie list', movies_path
