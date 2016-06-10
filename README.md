@@ -3,12 +3,22 @@ BDD, TDD Cycle
 
 In this assignment you will use a combination of Behavior-Driven Design (BDD) and Test-Driven Development (TDD) with the Cucumber and RSpec tools to add a "find movies with same director" feature to RottenPotatoes, and deploy the resulting app on Heroku.
 
-To get the initial RottenPotatoes code please fork this bdd-tdd-cycle repo to your GitHub account with the Fork button on GitHub. Then copy the clone URL from your repo, and execute the following command in the top level of your Cloud9 workspace:
+Learning Goals
+--------------
+After you complete this assignment, you should be able to:
+* Create and run simple Cucumber scenarios to test a new feature
+* Use TDD with RSpec to drive the creation of app code that lets the Cucumber scenario pass
+* Understand where to modify a Rails app to implement the various parts of a new feature, since a new feature often touches the database schema, model(s), view(s), and controller(s)
+
+
+Introduction and Setup
+----
+To get the initial RottenPotatoes code please fork this repo to your GitHub account with the Fork button on GitHub. Then copy the clone URL from your repo, and execute the following command in the top level of your Cloud9 workspace:
 
 `git clone <your clone URL goes here>`
 
-Next, follow the instructions below to get setup:
-----
+Once you have the clone of your repo:
+
 1) Change into the rottenpotatoes directory: `cd hw-bdd-tdd-cycle/rottenpotatoes`  
 2) Run `bundle install --without production` to make sure all gems are properly installed.    
 3) Run `bundle exec rake db:migrate` to apply database migrations.    
