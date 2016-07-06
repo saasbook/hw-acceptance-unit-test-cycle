@@ -1,25 +1,27 @@
-BDD, TDD Cycle
+Acceptance-Unit Test Cycle
 ===
 
-In this assignment you will use a combination of Behavior-Driven Design (BDD) and Test-Driven Development (TDD) with the Cucumber and RSpec tools to add a "find movies with same director" feature to RottenPotatoes, and deploy the resulting app on Heroku.
+In this assignment you will use a combination of Acceptance and Units tests with the Cucumber and RSpec tools to add a "find movies with same director" feature to RottenPotatoes, and deploy the resulting app on Heroku.
 
 Learning Goals
 --------------
 After you complete this assignment, you should be able to:
 * Create and run simple Cucumber scenarios to test a new feature
-* Use TDD with RSpec to drive the creation of app code that lets the Cucumber scenario pass
+* Use RSpec to create unit tests that drive the creation of app code that lets the Cucumber scenario pass
 * Understand where to modify a Rails app to implement the various parts of a new feature, since a new feature often touches the database schema, model(s), view(s), and controller(s)
 
 
 Introduction and Setup
 ----
-To get the initial RottenPotatoes code please fork this repo to your GitHub account with the Fork button on GitHub. Then copy the clone URL from your repo, and execute the following command in the top level of your Cloud9 workspace:
+To get the initial RottenPotatoes code please clone this repo to your local machine or C9 workspace, and execute the following command in the top level of your Cloud9 workspace:
 
-`git clone <your clone URL goes here>`
+```sh
+$ git clone https://github.com/saasbook/hw-acceptance-unit-test-cycle
+```
 
-Once you have the clone of your repo:
+Once you have the clone of the repo:
 
-1) Change into the rottenpotatoes directory: `cd hw-bdd-tdd-cycle/rottenpotatoes`  
+1) Change into the rottenpotatoes directory: `cd hw-acceptance-unit-test-cycle/rottenpotatoes`  
 2) Run `bundle install --without production` to make sure all gems are properly installed.    
 3) Run `bundle exec rake db:migrate` to apply database migrations.    
 4) Finally, run these commands to set up the Cucumber directories (under features/) and RSpec directories (under spec/) if they don't already exist, allowing overwrite of any existing files:
@@ -44,7 +46,7 @@ Remember to add `:director` to the list of movie attributes in the `def movie_pa
 Remember that once the migration is applied, you also have to do `rake db:test:prepare` 
 to load the new post-migration schema into the test database!
 
-**Part 2: use BDD+TDD to get new scenarios passing**
+**Part 2: use Acceptance and Unit tests to get new scenarios passing**
 
 We've provided [three Cucumber scenarios](http://pastebin.com/L6FYWyV7) to 
 drive creation of the happy path of Search for Movies by Director.
@@ -116,18 +118,20 @@ Here are the instructions for submitting HW4. Submit a zip file with various dir
 * Gemfile
 Gemfile.lock
 
-If you modified any other files, please include them too. If you are on a *nix based system, navigate to the root directory for HW4 and run
+If you modified any other files, please include them too. If you are on a *nix based system, navigate to the root directory for this assignment and run
 
-```zip -r hw4.zip hw4/app/ hw4/config/ hw4/db/migrate hw4/features/ hw4/spec/ hw4/Gemfile hw4/Gemfile.lock```
+```sh
+$ zip -r hw5.zip hw5/app/ hw5/config/ hw5/db/migrate hw5/features/ hw5/spec/ hw5/Gemfile hw5/Gemfile.lock
+```
 
-This will create the file hw4.zip, which you will submit.
+This will create the file hw5.zip, which you will submit.
 
 IMPORTANT NOTE: Your submission must be zipped inside a hw folder so that it looks like so:
 
 ```
 $ tree
 .
-└── hw4
+└── hw5
     ├── Gemfile
     ├── Gemfile.lock
     ├── app
