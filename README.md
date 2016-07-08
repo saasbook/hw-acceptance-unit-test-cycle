@@ -108,7 +108,7 @@ Improve your test coverage by adding unit tests for untested or undertested code
 
 **Submission:**
 
-Here are the instructions for submitting HW4. Submit a zip file with various directories of your app:
+Here are the instructions for submitting your assignment for grading. Submit a zip file containing the following files and directories of your app:
 
 * app/
 * config/
@@ -116,12 +116,13 @@ Here are the instructions for submitting HW4. Submit a zip file with various dir
 * features/
 * spec/
 * Gemfile
-Gemfile.lock
+* Gemfile.lock
 
 If you modified any other files, please include them too. If you are on a *nix based system, navigate to the root directory for this assignment and run
 
 ```sh
-$ zip -r hw5.zip hw5/app/ hw5/config/ hw5/db/migrate hw5/features/ hw5/spec/ hw5/Gemfile hw5/Gemfile.lock
+$ cd ..
+$ zip -r hw5.zip rottenpotatoes/app/ rottenpotatoes/config/ rottenpotatoes/db/migrate rottenpotatoes/features/ rottenpotatoes/spec/ rottenpotatoes/Gemfile rottenpotatoes/Gemfile.lock
 ```
 
 This will create the file hw5.zip, which you will submit.
