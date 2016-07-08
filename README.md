@@ -127,12 +127,12 @@ $ zip -r hw5.zip rottenpotatoes/app/ rottenpotatoes/config/ rottenpotatoes/db/mi
 
 This will create the file hw5.zip, which you will submit.
 
-IMPORTANT NOTE: Your submission must be zipped inside a hw folder so that it looks like so:
+IMPORTANT NOTE: Your submission must be zipped inside a rottenpotatoes/ folder so that it looks like so:
 
 ```
 $ tree
 .
-└── hw5
+└── rottenpotatoes
     ├── Gemfile
     ├── Gemfile.lock
     ├── app
