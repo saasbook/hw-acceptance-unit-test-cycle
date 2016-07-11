@@ -1,7 +1,8 @@
 Acceptance-Unit Test Cycle
 ===
 
-In this assignment you will use a combination of Acceptance and Units tests with the Cucumber and RSpec tools to add a "find movies with same director" feature to RottenPotatoes, and deploy the resulting app on Heroku.
+In this assignment you will use a combination of Acceptance and Units tests with the Cucumber and RSpec tools to add a "find movies with same director" feature to RottenPotatoes.
+
 
 Learning Goals
 --------------
