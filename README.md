@@ -105,7 +105,7 @@ not overwrite the coverage results from SimpleCov and vice versa.
 
 To see the results in Cloud9, open /coverage/index.html. You will see the code, but click the Run button at the top. This will spin up a web server with a link in the console you can click to see your coverage report.
 
-Improve your test coverage by adding unit tests for untested or undertested code. Specifically, you can write unit tests for the `update`, `destroy`, and `create` controller methods.
+Improve your test coverage by adding unit tests for untested or undertested code. Specifically, you can write unit tests for the `index`, `update`, `destroy`, and `create` controller methods.
 
 **Submission:**
 
