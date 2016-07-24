@@ -25,14 +25,32 @@ Once you have the clone of the repo:
 1) Change into the rottenpotatoes directory: `cd hw-acceptance-unit-test-cycle/rottenpotatoes`  
 2) Run `bundle install --without production` to make sure all gems are properly installed.    
 3) Run `bundle exec rake db:migrate` to apply database migrations.    
-4) Finally, run these commands to set up the Cucumber directories (under features/) and RSpec directories (under spec/) if they don't already exist, allowing overwrite of any existing files:
+4) Run these commands to set up the Cucumber directories (under features/) and RSpec directories (under spec/) if they don't already exist, allowing overwrite of any existing files:
 
 ```shell
 rails generate cucumber:install capybara
 rails generate cucumber_rails_training_wheels:install
 rails generate rspec:install
 ```
-5) You can double-check if everything was installed by running the tasks `rspec` and `cucumber`.  
+
+5) Create a new file called `rspec.rb` in features/support with the following contents:
+
+```
+require 'rspec/core'
+
+RSpec.configure do |config|
+  config.mock_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
+  config.expect_with :rspec do |c|
+    c.syntax = [:should, :expect]``
+  end
+end
+```
+
+This prevents RSpec from issuing DEPRECATION warnings when it encounters deprecated syntax in `features/step_definitions/web_steps`.
+
+6) You can double-check if everything was installed by running the tasks `rspec` and `cucumber`.  
 
 Since presumably you have no features or specs yet, both tasks should execute correctly reporting that there are zero tests to run. Depending on your version of rspec, it may also display a message stating that it was not able to find any _spec.rb files.
 
