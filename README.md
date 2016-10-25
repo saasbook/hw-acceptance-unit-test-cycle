@@ -43,7 +43,7 @@ RSpec.configure do |config|
     c.syntax = [:should, :expect]
   end
   config.expect_with :rspec do |c|
-    c.syntax = [:should, :expect]``
+    c.syntax = [:should, :expect]
   end
 end
 ```
