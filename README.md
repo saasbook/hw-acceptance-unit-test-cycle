@@ -52,7 +52,30 @@ This prevents RSpec from issuing DEPRECATION warnings when it encounters depreca
 
 6) You can double-check if everything was installed by running the tasks `rspec` and `cucumber`.  
 
-Since presumably you have no features or specs yet, both tasks should execute correctly reporting that there are zero tests to run. Depending on your version of rspec, it may also display a message stating that it was not able to find any _spec.rb files.
+Since presumably you have no features or specs yet, both tasks should execute correctly reporting that there are zero tests to run. 
+
+Depending on your version of RSpec, RSpec may also display a message stating that it was not able to find any _spec.rb files.
+
+Also Cucumber will expect you to have run the database migrations so you may get the following error:
+
+```
+tansaku:~/workspace/hw-acceptance-unit-test-cycle/rottenpotatoes (master) $ bundle exec cucumber
+
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rake db:migrate RAILS_ENV=test
+
+ (ActiveRecord::PendingMigrationError)
+/usr/local/rvm/gems/ruby-2.3.0/gems/activerecord-4.2.6/lib/active_record/migration.rb:392:in `check_pending!'
+/usr/local/rvm/gems/ruby-2.3.0/gems/activerecord-4.2.6/lib/active_record/migration.rb:405:in `load_schema_if_pending!'
+...
+/usr/local/rvm/gems/ruby-2.3.0/bin/ruby_executable_hooks:15:in `eval'
+/usr/local/rvm/gems/ruby-2.3.0/bin/ruby_executable_hooks:15:in `<main>'
+```
+
+This can be addressed by following the instruction in the error message: `bin/rake db:migrate RAILS_ENV=test`
+
 
 **Part 1: add a Director field to Movies**
 
