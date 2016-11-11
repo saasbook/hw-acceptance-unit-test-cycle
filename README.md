@@ -24,7 +24,7 @@ Once you have the clone of the repo:
 
 1) Change into the rottenpotatoes directory: `cd hw-acceptance-unit-test-cycle/rottenpotatoes`  
 2) Run `bundle install --without production` to make sure all gems are properly installed.    
-3) Run `bundle exec rake db:migrate` to apply database migrations.    
+3) Run `bundle exec rake db:migrate` to apply database migrations.    [ Note: expect to see "[DEPRECATION] `last_comment` is deprecated.  Please use `last_description` instead." If you are interested you can read [more about what deprecation means](https://en.wikipedia.org/wiki/Deprecation#Software_deprecation), however you can safely ignore this for the time being.
 4) Run these commands to set up the Cucumber directories (under features/) and RSpec directories (under spec/) if they don't already exist, allowing overwrite of any existing files:
 
 ```shell
@@ -74,7 +74,7 @@ Migrations are pending. To resolve this issue, run:
 /usr/local/rvm/gems/ruby-2.3.0/bin/ruby_executable_hooks:15:in `<main>'
 ```
 
-This can be addressed by following the instruction in the error message: `bin/rake db:migrate RAILS_ENV=test`
+This can be addressed by following the instruction in the error message (however note we don't need the `bin`): `rake db:migrate RAILS_ENV=test`
 
 
 **Part 1: add a Director field to Movies**
@@ -85,8 +85,19 @@ HINT: use the [`add_column` method of `ActiveRecord::Migration`](http://apidock.
 
 Remember to add `:director` to the list of movie attributes in the `def movie_params` method in `movies_controller.rb`.
 
-Remember that once the migration is applied, you also have to do `rake db:test:prepare` 
-to load the new post-migration schema into the test database!
+Remember to apply the migration (i.e. `rake db:migrate RAILS_ENV=test`).
+
+#### Self Check Questions
+
+<details>
+  <summary>Why do we need the `RAILS_ENV=test` element for cucumber to avoid encountering the error.</summary>
+  <p><blockquote>Rails assumes three databases; test, development and production.  Cucumber is a testing tool and will always work against the test database.  So if we want to run our Cucumber (or RSpec) tests against the latest version of our database that includes our latest migration, we will need to run `RAILS_ENV=test`</blockquote></p>
+</details>
+
+<details>
+  <summary>How do we ensure that our development database has the latest migrations for running the rails app locally?</summary>
+  <p><blockquote>We can run `rake db:migrate RAILS_ENV=development` or simply `rake db:migrate` since rake db commands will be applied to the development database by default</blockquote></p>
+</details>
 
 **Part 2: use Acceptance and Unit tests to get new scenarios passing**
 
