@@ -90,7 +90,7 @@ Remember to apply the migration (i.e. `rake db:migrate RAILS_ENV=test`).
 #### Self Check Questions
 
 <details>
-  <summary>Why do we need the `RAILS_ENV=test` element for cucumber to avoid encountering the error.</summary>
+  <summary>Why do we need the `RAILS_ENV=test` element for cucumber to avoid encountering the error?</summary>
   <p><blockquote>Rails assumes three databases; test, development and production.  Cucumber is a testing tool and will always work against the test database.  So if we want to run our Cucumber (or RSpec) tests against the latest version of our database that includes our latest migration, we will need to run `RAILS_ENV=test`</blockquote></p>
 </details>
 
