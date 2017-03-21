@@ -1,4 +1,4 @@
-class class Movie < ActiveRecord::Base
+class Movie < ActiveRecord::Base
   class Movie::NoDirectorInfoFound < StandardError ; end
     
   def self.all_ratings
@@ -11,5 +11,4 @@ class class Movie < ActiveRecord::Base
     raise Movie::NoDirectorInfoFound, 'No director info found.' if tmovie.director.to_s.empty?
     Movie.where('id != ? and director = ?', id, tmovie.director)
   end
-end
 end
