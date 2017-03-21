@@ -9,15 +9,14 @@
     = rating
     = check_box_tag "ratings[#{rating}]", 1, @selected_ratings.include?(rating), :id => "ratings_#{rating}"
   = submit_tag 'Refresh', :id => 'ratings_submit'
-
 %table#movies
   %thead
     %tr
       %th{:class => @title_header}= link_to 'Movie Title', movies_path(:sort => 'title', :ratings => @selected_ratings), :id => 'title_header'
       %th Rating
       %th{:class => @date_header}= link_to 'Release Date', movies_path(:sort => 'release_date', :ratings => @selected_ratings), :id => 'release_date_header'
-      %th More Info
       %th Director
+      %th More Info
   %tbody
     - @movies.each do |movie|
       %tr
@@ -26,5 +25,4 @@
         %td= movie.release_date
         %td= movie.director
         %td= link_to "More about #{movie.title}", movie_path(movie)
-
 = link_to 'Add new movie', new_movie_path
