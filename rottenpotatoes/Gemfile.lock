@@ -182,6 +182,7 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest (= 4.11.0)
+  autotest-rails
   byebug
   capybara (= 2.4.4)
   coffee-rails (~> 4.1.0)
@@ -195,6 +196,7 @@ DEPENDENCIES
   rails (= 4.2.6)
   rspec-rails (= 3.5.0)
   sass-rails (~> 5.0.3)
+  simplecov
   sqlite3
   uglifier (>= 2.7.1)
 
