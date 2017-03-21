@@ -1,0 +1,38 @@
+memento:
+  id: 1
+  title: 'Memento'
+  rating: 'R'
+  description: 'memento movie'
+  release_date: <%= Time.zone.now %>
+  director: 'Christopher Nolan'
+  
+inception:
+  id: 2
+  title: 'Inception'
+  rating: 'R'
+  description: 'inception movie'
+  release_date: <%= Time.zone.now %>
+  director: 'Christopher Nolan'
+  
+scarface:
+  id: 3
+  title: 'Scarface'
+  rating: 'R'
+  description: 'scarface movie'
+  release_date: <%= Time.zone.now %>
+  director: 'Brian De Palma'
+  
+carrie:
+  id: 4
+  title: 'Carrie'
+  rating: 'R'
+  description: 'carrie movie'
+  release_date: <%= Time.zone.now %>
+  director: 'Brian De Palma'
+  
+primer:
+  id: 5
+  title: 'Primer'
+  rating: 'R'
+  description: 'primer movie'
+  release_date: <%= Time.zone.now %>
