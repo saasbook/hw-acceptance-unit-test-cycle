@@ -109,12 +109,13 @@ We want you to report your code coverage as well.
 
 Add `gem 'simplecov', :require => false` to the test group of your gemfile, then run `bundle install --without production`.
 
-Next, add the following lines to the TOP of spec/rails_helper.rb and features/support/env.rb:
+Next, add the following code **BEFORE ANYTHING ELSE ON LINE ONE** of spec/rails_helper.rb and features/support/env.rb:
 
 ```ruby
 require 'simplecov'
 SimpleCov.start 'rails'
 ```
+**WARNING: THE ABOVE CODE MUST COME BEFORE ALL OTHER CODE** in spec/rails_helper.rb and features/support/env.rb or **YOUR COVERAGE REPORTS WILL BE INACCURATE**
 
 Now when you run `rspec` or `cucumber`, SimpleCov will generate a report in a directory named
 `coverage/`. Since both RSpec and Cucumber are so widely used, SimpleCov
