@@ -25,16 +25,15 @@ Once you have the clone of the repo:
 
 1) Change into the rottenpotatoes directory: `cd hw-acceptance-unit-test-cycle/rottenpotatoes`  
 2) Run `bundle install --without production` to make sure all gems are properly installed.    
-3) Run `bundle exec rake db:migrate` to apply database migrations.    
-4) Run these commands to set up the Cucumber directories (under features/) and RSpec directories (under spec/) if they don't already exist, allowing overwrite of any existing files:
-
+3) Run 
 ```shell
-rails generate cucumber:install capybara
-rails generate cucumber_rails_training_wheels:install
-rails generate rspec:install
+bundle exec rake db:migrate
+bundle exec rake db:test:prepare
 ```
 
-5) Create a new file called `rspec.rb` in features/support with the following contents:
+to apply database migrations.
+
+4) Create a new file called `rspec.rb` in features/support with the following contents:
 
 ```
 require 'rspec/core'
@@ -51,9 +50,7 @@ end
 
 This prevents RSpec from issuing DEPRECATION warnings when it encounters deprecated syntax in `features/step_definitions/web_steps`.
 
-6) You can double-check if everything was installed by running the tasks `rspec` and `cucumber`.
-
-Since presumably you have no features or specs yet, both tasks should execute correctly reporting that there are zero tests to run. Depending on your version of rspec, it may also display a message stating that it was not able to find any _spec.rb files.
+5) You can double-check if everything was installed by running the tasks `rspec` and `cucumber`.
 
 **Part 1: add a Director field to Movies**
 
@@ -63,7 +60,9 @@ HINT: use the [`add_column` method of `ActiveRecord::Migration`](http://apidock.
 
 Remember to add `:director` to the list of movie attributes in the `def movie_params` method in `movies_controller.rb`.
 
-Remember that once the migration is applied, you also have to do `rake db:test:prepare` 
+Remember that once the migration is applied, you also have to do
+```rake db:test:prepare```
+
 to load the new post-migration schema into the test database!
 
 **Part 2: use Acceptance and Unit tests to get new scenarios passing**
@@ -125,7 +124,7 @@ not overwrite the coverage results from SimpleCov and vice versa.
 
 To see the results in Cloud9, open /coverage/index.html. You will see the code, but click the Run button at the top. This will spin up a web server with a link in the console you can click to see your coverage report.
 
-Improve your test coverage by adding unit tests for untested or undertested code. Specifically, you can write unit tests for the `index`, `update`, `destroy`, and `create` controller methods.
+Improve your test coverage by adding unit tests for untested or undertested code.
 
 **Submission:**
 
