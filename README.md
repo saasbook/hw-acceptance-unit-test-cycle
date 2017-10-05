@@ -51,7 +51,7 @@ end
 
 This prevents RSpec from issuing DEPRECATION warnings when it encounters deprecated syntax in `features/step_definitions/web_steps`.
 
-6) You can double-check if everything was installed by running the tasks `rspec` and `cucumber`.  
+6) You can double-check if everything was installed by running the tasks `rspec` and `cucumber`.
 
 Since presumably you have no features or specs yet, both tasks should execute correctly reporting that there are zero tests to run. Depending on your version of rspec, it may also display a message stating that it was not able to find any _spec.rb files.
 
