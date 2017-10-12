@@ -15,18 +15,19 @@ After you complete this assignment, you should be able to:
 
 Introduction and Setup
 ----
-To get the initial RottenPotatoes code please clone this repo to your local machine or C9 workspace, and execute the following command in your top level projects directory, or the root of your C9 workspace:
+To get the initial RottenPotatoes code please clone your fork of this repo to your local machine or C9 workspace, and execute the following command in your top level projects directory, or the root of your C9 workspace:
 
 ```sh
-$ git clone https://github.com/saasbook/hw-acceptance-unit-test-cycle
+$ git clone https://github.com/your_github_username/hw-acceptance-unit-test-cycle
 ```
 
 Once you have the clone of the repo:
 
 1) Change into the rottenpotatoes directory: `cd hw-acceptance-unit-test-cycle/rottenpotatoes`  
 2) Run `bundle install --without production` to make sure all gems are properly installed.    
-3) Run `bundle exec rake db:migrate` to apply database migrations.    
-4) Run these commands to set up the Cucumber directories (under features/) and RSpec directories (under spec/) if they don't already exist, allowing overwrite of any existing files:
+3) Run `bundle exec rake db:migrate` to apply database migrations. You may ignore any deprecation warnings.
+4) Run `bundle exec rake db:test:prepare` to apply database migrations to your test environment.
+5) Run these commands to set up the Cucumber directories (under features/) and RSpec directories (under spec/) if they don't already exist, allowing overwrite of any existing files:
 
 ```shell
 rails generate cucumber:install capybara
