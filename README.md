@@ -63,7 +63,7 @@ HINT: use the [`add_column` method of `ActiveRecord::Migration`](http://apidock.
 
 Remember to add `:director` to the list of movie attributes in the `def movie_params` method in `movies_controller.rb`.
 
-Remember that once the migration is applied, you also have to do `rake db:test:prepare` 
+Remember that once the migration is applied, you also have to do `rake db:migrate RAILS_ENV=test` 
 to load the new post-migration schema into the test database!
 
 **Part 2: use Acceptance and Unit tests to get new scenarios passing**
