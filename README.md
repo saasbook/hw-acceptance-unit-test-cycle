@@ -25,7 +25,7 @@ Once you have the clone of the repo:
 
 1) Change into the rottenpotatoes directory: `cd hw-acceptance-unit-test-cycle/rottenpotatoes`  
 2) Run `bundle install --without production` to make sure all gems are properly installed.    
-3) Run `bundle exec rake db:migrate` to apply database migrations.    
+3) Run `bundle exec rake db:migrate` and `bundle exec rake db:migrate RAILS_ENV=test` to apply database migrations to both development and test databases.    
 4) Run these commands to set up the Cucumber directories (under features/) and RSpec directories (under spec/) if they don't already exist, allowing overwrite of any existing files:
 
 ```shell
