@@ -36,7 +36,7 @@ rails generate rspec:install
 
 5) Create a new file called `rspec.rb` in features/support with the following contents:
 
-```
+```rb
 require 'rspec/core'
 
 RSpec.configure do |config|
@@ -112,7 +112,7 @@ Add `gem 'simplecov', :require => false` to the test group of your gemfile, then
 
 Next, add the following code **BEFORE ANYTHING ELSE ON LINE ONE** of spec/rails_helper.rb and features/support/env.rb:
 
-```ruby
+```rb
 require 'simplecov'
 SimpleCov.start 'rails'
 ```
