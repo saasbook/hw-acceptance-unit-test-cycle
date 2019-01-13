@@ -26,6 +26,8 @@ Once you have the clone of the repo:
 1) Change into the rottenpotatoes directory: `cd hw-acceptance-unit-test-cycle/rottenpotatoes`  
 2) Run `bundle install --without production` to make sure all gems are properly installed.    
 3) Run 
+
+
 ```shell
 bundle exec rake db:migrate
 bundle exec rake db:test:prepare
@@ -35,7 +37,7 @@ to apply database migrations.
 
 4) Create a new file called `rspec.rb` in features/support with the following contents:
 
-```
+```rb
 require 'rspec/core'
 
 RSpec.configure do |config|
@@ -60,9 +62,9 @@ HINT: use the [`add_column` method of `ActiveRecord::Migration`](http://apidock.
 
 Remember to add `:director` to the list of movie attributes in the `def movie_params` method in `movies_controller.rb`.
 
+
 Remember that once the migration is applied, you also have to do
 ```rake db:test:prepare```
-
 to load the new post-migration schema into the test database!
 
 **Part 2: use Acceptance and Unit tests to get new scenarios passing**
@@ -111,7 +113,7 @@ Add `gem 'simplecov', :require => false` to the test group of your gemfile, then
 
 Next, add the following code **BEFORE ANYTHING ELSE ON LINE ONE** of spec/rails_helper.rb and features/support/env.rb:
 
-```ruby
+```rb
 require 'simplecov'
 SimpleCov.start 'rails'
 ```
