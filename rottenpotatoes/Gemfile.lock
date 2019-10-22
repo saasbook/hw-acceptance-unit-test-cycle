@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    ZenTest (4.11.0)
+    ZenTest (4.11.2)
     actionmailer (4.2.10)
       actionpack (= 4.2.10)
       actionview (= 4.2.10)
@@ -106,7 +106,6 @@ GEM
     multi_test (0.1.2)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
-    pg (0.18.4)
     rack (1.6.10)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -181,7 +180,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ZenTest (= 4.11.0)
+  ZenTest (= 4.11.2)
   byebug
   capybara (= 2.4.4)
   coffee-rails (~> 4.1.0)
@@ -191,7 +190,6 @@ DEPENDENCIES
   haml
   jquery-rails
   launchy
-  pg
   rails (= 4.2.10)
   rspec-rails (= 3.7.2)
   sass-rails (~> 5.0.3)
@@ -202,4 +200,4 @@ RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.16.1
+   1.17.3
