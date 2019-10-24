@@ -60,7 +60,6 @@ HINT: use the [`add_column` method of `ActiveRecord::Migration`](http://apidock.
 
 Remember to add `:director` to the list of movie attributes in the `def movie_params` method in `movies_controller.rb`.
 
-
 Remember that once the migration is applied, you also have to do
 ```rake db:test:prepare```
 to load the new post-migration schema into the test database!
@@ -73,6 +72,45 @@ The first lets you add director info to an existing movie,
 and doesn't require creating any new views or controller actions 
 (but does require modifying existing views, and will require creating a new step definition and possibly adding a line
 or two to `features/support/paths.rb`).
+
+Three Scenarios:
+
+```
+Feature: search for movies by director
+
+  As a movie buff
+  So that I can find movies with my favorite director
+  I want to include and serach on director information in movies I enter
+
+Background: movies in database
+
+  Given the following movies exist:
+  | title        | rating | director     | release_date |
+  | Star Wars    | PG     | George Lucas |   1977-05-25 |
+  | Blade Runner | PG     | Ridley Scott |   1982-06-25 |
+  | Alien        | R      |              |   1979-05-25 |
+  | THX-1138     | R      | George Lucas |   1971-03-11 |
+
+Scenario: add director to existing movie
+  When I go to the edit page for "Alien"
+  And  I fill in "Director" with "Ridley Scott"
+  And  I press "Update Movie Info"
+  Then the director of "Alien" should be "Ridley Scott"
+
+Scenario: find movie with same director
+  Given I am on the details page for "Star Wars"
+  When  I follow "Find Movies With Same Director"
+  Then  I should be on the Similar Movies page for "Star Wars"
+  And   I should see "THX-1138"
+  But   I should not see "Blade Runner"
+
+Scenario: can't find similar movies if we don't know director (sad path)
+  Given I am on the details page for "Alien"
+  Then  I should not see "Ridley Scott"
+  When  I follow "Find Movies With Same Director"
+  Then  I should be on the home page
+  And   I should see "'Alien' has no director info"
+```
 
 The second lets you click a new link on a movie details page "Find Movies With Same Director", 
 and shows all movies that share the same director as the displayed movie.  
@@ -122,7 +160,7 @@ Now when you run `rspec` or `cucumber`, SimpleCov will generate a report in a di
 can intelligently merge the results, so running the tests for Rspec does
 not overwrite the coverage results from SimpleCov and vice versa.
 
-To see the results in Cloud9, open /coverage/index.html. You will see the code, but click the Run button at the top. This will spin up a web server with a link in the console you can click to see your coverage report.
+To see the results, open /coverage/index.html. You will see the code, but click the Run button at the top. This will spin up a web server with a link in the console you can click to see your coverage report.
 
 Improve your test coverage by adding unit tests for untested or undertested code.
 
@@ -142,10 +180,10 @@ If you modified any other files, please include them too. If you are on a *nix b
 
 ```sh
 $ cd ..
-$ zip -r hw5.zip rottenpotatoes/app/ rottenpotatoes/config/ rottenpotatoes/db/migrate rottenpotatoes/features/ rottenpotatoes/spec/ rottenpotatoes/Gemfile rottenpotatoes/Gemfile.lock
+$ zip -r acceptance-tests.zip rottenpotatoes/app/ rottenpotatoes/config/ rottenpotatoes/db/migrate rottenpotatoes/features/ rottenpotatoes/spec/ rottenpotatoes/Gemfile rottenpotatoes/Gemfile.lock
 ```
 
-This will create the file hw5.zip, which you will submit.
+This will create the file `acceptance-tests.zip`, which you will submit.
 
 IMPORTANT NOTE: Your submission must be zipped inside a rottenpotatoes/ folder so that it looks like so:
 
