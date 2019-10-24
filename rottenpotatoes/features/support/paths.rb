@@ -22,6 +22,9 @@ module NavigationHelpers
     when /^the details page for "(.*)"/
       movie = Movie.where(title: $1).first
       movie_path movie
+    
+    when /^the new page/
+      new_movie_path
       
     when /^the Similar Movies page for "(.*)"/
       movie = Movie.where(title: $1).first

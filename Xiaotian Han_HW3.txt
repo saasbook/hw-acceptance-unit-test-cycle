@@ -1,0 +1,172 @@
+https://github.com/YIWEI-CHEN/hw-acceptance-unit-test-cycle
+https://polar-eyrie-58960.herokuapp.com/
+===============================================================================================================================================
+Rspec log
+===============================================================================================================================================
+yiwei:~/environment/hw3/rottenpotatoes (master) $ rspec 
+DEPRECATION WARNING: Sprockets method `register_engine` is deprecated.
+Please register a mime type using `register_mime_type` then
+use `register_compressor` or `register_transformer`.
+https://github.com/rails/sprockets/blob/master/guides/extending_sprockets.md#supporting-all-versions-of-sprockets-in-processors
+ (called from block (2 levels) in <class:Railtie> at /home/ec2-user/.rvm/gems/ruby-2.4.0/gems/sass-rails-5.0.5/lib/sass/rails/railtie.rb:57)
+DEPRECATION WARNING: Sprockets method `register_engine` is deprecated.
+Please register a mime type using `register_mime_type` then
+use `register_compressor` or `register_transformer`.
+https://github.com/rails/sprockets/blob/master/guides/extending_sprockets.md#supporting-all-versions-of-sprockets-in-processors
+ (called from block (2 levels) in <class:Railtie> at /home/ec2-user/.rvm/gems/ruby-2.4.0/gems/sass-rails-5.0.5/lib/sass/rails/railtie.rb:58)
+...........
+
+Finished in 0.09495 seconds (files took 1.61 seconds to load)
+11 examples, 0 failures
+
+Coverage report generated for RSpec to /home/ec2-user/environment/hw3/rottenpotatoes/coverage. 52 / 52 LOC (100.0%) covered.
+===============================================================================================================================================
+Cucumber log
+===============================================================================================================================================
+yiwei:~/environment/hw3/rottenpotatoes (master) $ cucumber 
+DEPRECATION WARNING: Sprockets method `register_engine` is deprecated.
+Please register a mime type using `register_mime_type` then
+use `register_compressor` or `register_transformer`.
+https://github.com/rails/sprockets/blob/master/guides/extending_sprockets.md#supporting-all-versions-of-sprockets-in-processors
+ (called from block (2 levels) in <class:Railtie> at /home/ec2-user/.rvm/gems/ruby-2.4.0/gems/sass-rails-5.0.5/lib/sass/rails/railtie.rb:57)
+DEPRECATION WARNING: Sprockets method `register_engine` is deprecated.
+Please register a mime type using `register_mime_type` then
+use `register_compressor` or `register_transformer`.
+https://github.com/rails/sprockets/blob/master/guides/extending_sprockets.md#supporting-all-versions-of-sprockets-in-processors
+ (called from block (2 levels) in <class:Railtie> at /home/ec2-user/.rvm/gems/ruby-2.4.0/gems/sass-rails-5.0.5/lib/sass/rails/railtie.rb:58)
+Using the default profile...
+Feature: delete an existing movie
+  As a moviegoer
+  So that I can delete the movie
+  I do not want to see a movie
+
+  Background: movies in database      # features/create_movie.feature:7
+    Given the following movies exist: # features/step_definitions/movies_steps.rb:2
+      | title        | rating | director     | release_date |
+      | Star Wars    | PG     | George Lucas | 1977-05-25   |
+      | Blade Runner | PG     | Ridley Scott | 1982-06-25   |
+      | Alien        | R      |              | 1979-05-25   |
+      | THX-1138     | R      | George Lucas | 1971-03-11   |
+
+  Scenario: delete a movie                         # features/create_movie.feature:16
+    Given I am on the details page for "Star Wars" # features/step_definitions/web_steps.rb:44
+    When I press "Delete"                          # features/step_definitions/web_steps.rb:52
+    Then I should be on the home page              # features/step_definitions/web_steps.rb:230
+    And I should see "Movie 'Star Wars' deleted."  # features/step_definitions/web_steps.rb:105
+
+Feature: create a new movie
+  As a moviegoer
+  So that I can add the new movie
+  I want to see a new movie
+
+  Scenario: create a new movie                            # features/delete_movie.feature:7
+    When I am on the new page                             # features/step_definitions/web_steps.rb:44
+    And I fill in "Title" with "Something"                # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                            # features/step_definitions/web_steps.rb:52
+    Then I should be on the home page                     # features/step_definitions/web_steps.rb:230
+    And I should see "Something was successfully created" # features/step_definitions/web_steps.rb:105
+
+Feature: display list of movies filtered by MPAA rating
+  As a concerned parent
+  So that I can quickly browse movies appropriate for my family
+  I want to see movies matching only certain MPAA ratings
+
+  Background: movies have been added to database # features/filter_movie_list.feature:7
+    Given the following movies exist:            # features/step_definitions/movies_steps.rb:2
+      | title                   | rating | release_date |
+      | Aladdin                 | G      | 25-Nov-1992  |
+      | The Terminator          | R      | 26-Oct-1984  |
+      | When Harry Met Sally    | R      | 21-Jul-1989  |
+      | The Help                | PG-13  | 10-Aug-2011  |
+      | Chocolat                | PG-13  | 5-Jan-2001   |
+      | Amelie                  | R      | 25-Apr-2001  |
+      | 2001: A Space Odyssey   | G      | 6-Apr-1968   |
+      | The Incredibles         | PG     | 5-Nov-2004   |
+      | Raiders of the Lost Ark | PG     | 12-Jun-1981  |
+      | Chicken Run             | G      | 21-Jun-2000  |
+    And I am on the RottenPotatoes home page     # features/step_definitions/web_steps.rb:44
+
+  Scenario: restrict to movies with 'PG' or 'R' ratings # features/filter_movie_list.feature:24
+      # enter step(s) to check the 'PG' and 'R' checkboxes
+      # enter step(s) to uncheck all other checkboxes
+      # enter step to "submit" the search form on the homepage
+      # enter step(s) to ensure that PG and R movies are visible
+      # enter step(s) to ensure that other movies are not visible
+    When I check the following ratings: PG, R           # features/step_definitions/movies_steps.rb:14
+    And I uncheck the following ratings: G, PG-13       # features/step_definitions/movies_steps.rb:14
+    And I press "ratings_submit"                        # features/step_definitions/web_steps.rb:52
+    Then I should see "The Incredibles"                 # features/step_definitions/web_steps.rb:105
+    And I should see "The Terminator"                   # features/step_definitions/web_steps.rb:105
+    And I should not see "Alladin"                      # features/step_definitions/web_steps.rb:123
+    And I should not see "The Help"                     # features/step_definitions/web_steps.rb:123
+
+  Scenario: all ratings selected                        # features/filter_movie_list.feature:38
+    When I check the following ratings: PG, R, G, PG-13 # features/step_definitions/movies_steps.rb:14
+    And I press "ratings_submit"                        # features/step_definitions/web_steps.rb:52
+    Then I should see all the movies                    # features/step_definitions/movies_steps.rb:20
+
+Feature: search for movies by director
+  As a movie buff
+  So that I can find movies with my favorite director
+  I want to include and serach on director information in movies I enter
+
+  Background: movies in database      # features/search_movies_by_director.feature:7
+    Given the following movies exist: # features/step_definitions/movies_steps.rb:2
+      | title        | rating | director     | release_date |
+      | Star Wars    | PG     | George Lucas | 1977-05-25   |
+      | Blade Runner | PG     | Ridley Scott | 1982-06-25   |
+      | Alien        | R      |              | 1979-05-25   |
+      | THX-1138     | R      | George Lucas | 1971-03-11   |
+
+  Scenario: add director to existing movie                # features/search_movies_by_director.feature:16
+    When I go to the edit page for "Alien"                # features/step_definitions/web_steps.rb:48
+    And I fill in "Director" with "Ridley Scott"          # features/step_definitions/web_steps.rb:60
+    And I press "Update Movie Info"                       # features/step_definitions/web_steps.rb:52
+    Then the director of "Alien" should be "Ridley Scott" # features/step_definitions/movies_steps.rb:27
+
+  Scenario: find movie with same director                       # features/search_movies_by_director.feature:22
+    Given I am on the details page for "Star Wars"              # features/step_definitions/web_steps.rb:44
+    When I follow "Find Movies With Same Director"              # features/step_definitions/web_steps.rb:56
+    Then I should be on the Similar Movies page for "Star Wars" # features/step_definitions/web_steps.rb:230
+    And I should see "THX-1138"                                 # features/step_definitions/web_steps.rb:105
+    But I should not see "Blade Runner"                         # features/step_definitions/web_steps.rb:123
+
+  Scenario: can't find similar movies if we don't know director (sad path) # features/search_movies_by_director.feature:29
+    Given I am on the details page for "Alien"                             # features/step_definitions/web_steps.rb:44
+    Then I should not see "Ridley Scott"                                   # features/step_definitions/web_steps.rb:123
+    When I follow "Find Movies With Same Director"                         # features/step_definitions/web_steps.rb:56
+    Then I should be on the home page                                      # features/step_definitions/web_steps.rb:230
+    And I should see "'Alien' has no director info"                        # features/step_definitions/web_steps.rb:105
+
+Feature: display list of movies sorted by different criteria
+  As an avid moviegoer
+  So that I can quickly browse movies based on my preferences
+  I want to see movies sorted by title or release date
+
+  Background: movies have been added to database # features/sort_movie_list.feature:7
+    Given the following movies exist:            # features/step_definitions/movies_steps.rb:2
+      | title                   | rating | release_date |
+      | Aladdin                 | G      | 25-Nov-1992  |
+      | The Terminator          | R      | 26-Oct-1984  |
+      | When Harry Met Sally    | R      | 21-Jul-1989  |
+      | The Help                | PG-13  | 10-Aug-2011  |
+      | Chocolat                | PG-13  | 5-Jan-2001   |
+      | Amelie                  | R      | 25-Apr-2001  |
+      | 2001: A Space Odyssey   | G      | 6-Apr-1968   |
+      | The Incredibles         | PG     | 5-Nov-2004   |
+      | Raiders of the Lost Ark | PG     | 12-Jun-1981  |
+      | Chicken Run             | G      | 21-Jun-2000  |
+    And I am on the RottenPotatoes home page     # features/step_definitions/web_steps.rb:44
+
+  Scenario: sort movies alphabetically          # features/sort_movie_list.feature:24
+    When I follow "Movie Title"                 # features/step_definitions/web_steps.rb:56
+    Then I should see "Aladdin" before "Amelie" # features/step_definitions/movies_steps.rb:8
+
+  Scenario: sort movies in increasing order of release date # features/sort_movie_list.feature:28
+    When I follow "Release Date"                            # features/step_definitions/web_steps.rb:56
+    Then I should see "Aladdin" before "Amelie"             # features/step_definitions/movies_steps.rb:8
+
+9 scenarios (9 passed)
+49 steps (49 passed)
+0m0.627s
+Coverage report generated for Cucumber Features to /home/ec2-user/environment/hw3/rottenpotatoes/coverage. 52 / 52 LOC (100.0%) covered.
