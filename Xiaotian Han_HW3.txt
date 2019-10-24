@@ -1,9 +1,7 @@
-https://github.com/YIWEI-CHEN/hw-acceptance-unit-test-cycle
-https://polar-eyrie-58960.herokuapp.com/
 ===============================================================================================================================================
 Rspec log
 ===============================================================================================================================================
-yiwei:~/environment/hw3/rottenpotatoes (master) $ rspec 
+ubuntu:~/environment/hw-acceptance-unit-test-cycle/rottenpotatoes (master) $ rspec 
 DEPRECATION WARNING: Sprockets method `register_engine` is deprecated.
 Please register a mime type using `register_mime_type` then
 use `register_compressor` or `register_transformer`.
