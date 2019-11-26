@@ -17,7 +17,7 @@ Introduction and Setup
 ----
 To get the initial RottenPotatoes code please clone your fork of this repo to your local machine or C9 workspace, and execute the following command in your top level projects directory, or the root of your C9 workspace:
 
-`$ git clone https://github.com/`_your-github-username_`/hw-acceptance-unit-test-cycle`
+`$ git clone https://github.com/YOUR_GITHUB_USERNAME/hw-acceptance-unit-test-cycle`
 
 Once you have the clone of the repo:
 
