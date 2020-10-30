@@ -1,11 +1,16 @@
 Acceptance-Unit Test Cycle
 ===
 
+
 In this assignment you will use a combination of Acceptance and Units tests with the Cucumber and RSpec tools to add a "find movies with same director" feature to RottenPotatoes.
 
-**NOTE: Do not clone this repo to your workspace. Click the green "Use This
-Template" button above to create a clean copy of the repo in your own GitHub account, and then clone
-that copy to your development environment.**
+(If you're not reading this directly on GitHub, you'll need to
+temporarily [visit the GitHub
+repo](https://github.com/saasbook/hw-acceptance-unit-test-cycle).)
+
+To start:
+in this repo, click the green "Use This
+Template" button above to create a clean copy of the repo in your own GitHub account.
 
 Learning Goals
 --------------
@@ -17,7 +22,7 @@ After you complete this assignment, you should be able to:
 
 Introduction and Setup
 ----
-Clone **your own copy** of the repo to your development environment (**do
+Clone **your copy** of this template repo to your development environment (**do
 not clone** this reference repo or you'll be unable to push your
 changes);
 
@@ -29,8 +34,9 @@ Or if you've been using `ssh` as your GitHub transport:
 
 Once you have the clone of the repo:
 
-1) Change into the rottenpotatoes directory: `cd hw-acceptance-unit-test-cycle/rottenpotatoes`  
-2) Run `bundle install --without production` to make sure all gems are
+1. Change into the rottenpotatoes directory: `cd hw-acceptance-unit-test-cycle/rottenpotatoes`  
+
+2. Run `bundle install --without production` to make sure all gems are
 properly installed.  **NOTE:** If Bundler complains that the wrong
 Ruby version is installed, verify that `rvm` is installed (for
 example, `rvm --version`) and say `rvm list` to see which Ruby
@@ -40,7 +46,7 @@ installed, you can say `rvm install `_version_ to install a new
 version, then `rvm use `_version_ to use it.  Then you can try `bundle
 install` again.
 
-3) Create the initial database schema:
+3. Create the initial database schema:
 
 
 ```shell
@@ -48,16 +54,31 @@ bundle exec rake db:migrate
 bundle exec rake db:test:prepare
 ```
 
-4) You can optionally add some seed data in `db/seeds.rb` and run `rake
+4. You can optionally add some seed data in `db/seeds.rb` and run `rake
 db:seed` to add it.
 
-5) Double check that RSpec is correctly set up by running `rake rspec`.
-Although there are no `rspec` tests yet, the task should run without
+5. Double check that RSpec is correctly set up by running `rake
+spec`.  (Note--*not* `rake rspec` as you might think. Sorry.)
+Although there are no RSpec tests yet, the task should run without
 error.  
 
-6) Double check that Cucumber is correctly set up by running `rake
-cucumber`.  We've provided a couple of scenarios that should pass,
-which you will use as a starting point.
+6. Double check that Cucumber is correctly set up by running `rake
+cucumber`.  We've provided a couple of scenarios that will fail,
+which you can use as a starting point, in `features/movies_by_director.feature`.
+
+<details>
+  <summary> 
+  Read the Cucumber failure error messages.  The first test failure
+  should be "unknown attribute 'director' for Movie."
+  What will you have to do to address that
+  specific error?  (Add something to a file, change the database, etc.)
+  </summary>
+  <p><blockquote> 
+  You'll have to create and apply a migration that adds a `director`
+  column to the `movies` table in the database.
+  </blockquote></p>
+</details>
+
 
 # Part 1: add a Director field to Movies
 
@@ -65,19 +86,29 @@ Create and apply a migration that adds the Director field to the movies table.
 The director field should be a string containing the name of the
 movie’s director. 
 
-Hints:
-
-*  Use the [`add_column` method of `ActiveRecord::Migration`](http://apidock.com/rails/ActiveRecord/ConnectionAdapters/SchemaStatements/add_column) to do this. 
-
-* Don't forget to add `:director` to the list of movie attributes in the `def movie_params` method in `movies_controller.rb`.
-
+* Hint: you may find useful the [`add_column` method of `ActiveRecord::Migration`](http://apidock.com/rails/ActiveRecord/ConnectionAdapters/SchemaStatements/add_column). 
 * Remember that once the migration is applied, you also have to do `rake db:test:prepare`
 to load the new post-migration schema into the test database.
 
+
+<summary> 
+  Clearly, now that a new field has been added, we will have to modify
+  the Views so that the user can see and enter values for that field.
+  Do we also have to modify the model file in order for the new field
+  to be "noticed"?
+  </summary>
+  <p><blockquote> 
+  Nope.  ActiveRecord infers the columns and their data types by
+  inspecting the database.  However, if we wanted to have a validation
+  on that column, we'd have to specifically mention it in a
+  `validates` call.
+  </blockquote></p>
+</details>
+
 <details>
   <summary> 
-  Look at the step definitions involved in the Cucumber
-  scenarios.  (Where would you find them?)  Based on the step
+  Look at the step definitions for the failing steps of the Cucumber
+  scenarios.  (Where would you find those definitions?)  Based on the step
   definitions, which step(s) of the scenario file would you now expect
   to *pass* if you re-run Cucumber, and why?
   </summary>
@@ -93,7 +124,38 @@ to load the new post-migration schema into the test database.
 Verify that the Cucumber steps you expect to pass actually do pass.
 
 
-# Part 2: use Acceptance and Unit tests to get new scenarios passing**
+<summary> 
+  Besides modifying the Views, will we have to modify anything in the
+  controller?  If so, what? 
+  </summary>
+  <p><blockquote> 
+  Yes: we have to add `:director` to the list of movie attributes in
+  the `def movie_params` method in `movies_controller.rb`.  Otherwise,
+  even if that value is available as `params["movie"]["director"]`, it
+  will be "scrubbed" by the `require` and `permit` calls on `params`
+  before the controller actions are able to see it.
+  </blockquote></p>
+</details>
+
+<summary> 
+  Which controller actions, specifically, would fail to work correctly
+  if we didn't make the above change?
+  </summary>
+  <p><blockquote> 
+  `create` and `update` would fail, since they are the ones that
+  expect a form submission in `params` in which `params["movies"]`
+  should appear.  The other actions do not expect or manipulate this
+  form (and do not call the helper function `movie_params`) so they
+  would not be affected.
+  </blockquote></p>
+</details>
+
+Based on the above self-checks, you should be able to modify the
+controller and views as needed to be "aware" of the new Director field.
+
+
+
+# Part 2: use Acceptance and Unit tests to get new scenarios passing
 
 We've provided three Cucumber scenarios in the file
 `features/movies_by_director.feature` to
@@ -118,7 +180,11 @@ the creation of:
 
 + a RESTful route for Find Similar Movies 
 (HINT: use the 'match' syntax for routes as suggested in "Non-Resource-Based Routes" 
-in the [Rails Routing documentation](http://guides.rubyonrails.org/routing.html).  of ESaaS). You can also use the key `:as` to specify a name to generate helpers (i.e. search_directors_path)  Note: you probably won’t test this directly in rspec, but a line in Cucumber or rspec will fail if the route is not correct.
+in the [Rails Routing
+documentation](http://guides.rubyonrails.org/routing.html).  of
+ESaaS). You can also use the key `:as` to specify a name to generate
+helpers (i.e. search_directors_path)  Note: you probably won’t test
+this directly in a spec, but a line in Cucumber or rspec will fail if the route is not correct.
 
 + a controller method to receive the click
 on "Find With Same Director", and grab the `id` (for example) of the movie
@@ -126,8 +192,24 @@ that is the subject of the match (i.e. the one we're trying to find
 movies similar to) 
 
 + a model method in the `Movie` model to find movies
-whose director matches that of the current movie. Note: This implies
-that you should write at least 2 specs for your controller: 1) When
+whose director matches that of the current movie.
+
+<details>
+  <summary> 
+  Would this model method be a class method or instance method?
+  </summary>
+  <p><blockquote> 
+  Technically it could be either.  You could call it on a movie, the
+  idea being that it returns other movies with the same director as
+  its receiver, e.g. <code>movie.others_by_same_director()</code>.  Or
+  you could define it as a class method, e.g. <code>Movie.with_director(director)</code>.
+  In fact, it's great practice to write it both ways.
+  </blockquote></p>
+</details>
+
+Verify that the Cucumber steps you expect to pass actually do pass.
+
+Note: You should write at least 2 specs for your controller: 1) When
 the specified movie has a director, it should...  2) When the
 specified movie has no director, it should ... and 2 specs for your model:
 1) it should return the correct matches for movies by the same director and 2) it should not
