@@ -90,8 +90,8 @@ movie’s director.
 * Remember that once the migration is applied, you also have to do `rake db:test:prepare`
 to load the new post-migration schema into the test database.
 
-
-<summary> 
+<details>
+  <summary>
   Clearly, now that a new field has been added, we will have to modify
   the Views so that the user can see and enter values for that field.
   Do we also have to modify the model file in order for the new field
@@ -210,11 +210,13 @@ whose director matches that of the current movie.
 
 Verify that the Cucumber steps you expect to pass actually do pass.
 
-Note: You should write at least 2 specs for your controller: 1) When
-the specified movie has a director, it should...  2) When the
-specified movie has no director, it should ... and 2 specs for your model:
-1) it should return the correct matches for movies by the same director and 2) it should not
-return matches of movies by different directors. 
+Note: You should write at least 2 specs for your controller:
+1) When the specified movie has a director, it should...
+2) When the specified movie has no director, it should ...
+
+and 2 specs for your model:
+1) it should return the correct matches for movies by the same director and
+2) it should not return matches of movies by different directors.
 
 It's up to you to
 decide whether you want to handle the sad path of "no director" in the
