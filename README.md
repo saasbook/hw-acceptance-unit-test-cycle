@@ -74,8 +74,8 @@ which you can use as a starting point, in `features/movies_by_director.feature`.
   specific error?  (Add something to a file, change the database, etc.)
   </summary>
   <p><blockquote> 
-  You'll have to create and apply a migration that adds a `director`
-  column to the `movies` table in the database.
+  You'll have to create and apply a migration that adds a <code>director</code>
+  column to the <code>movies</code> table in the database.
   </blockquote></p>
 </details>
 
@@ -86,12 +86,12 @@ Create and apply a migration that adds the Director field to the movies table.
 The director field should be a string containing the name of the
 movie’s director. 
 
-* Hint: you may find useful the [`add_column` method of `ActiveRecord::Migration`](http://apidock.com/rails/ActiveRecord/ConnectionAdapters/SchemaStatements/add_column). 
+* Hint: you may find the [`add_column` method of `ActiveRecord::Migration`](http://apidock.com/rails/ActiveRecord/ConnectionAdapters/SchemaStatements/add_column) useful.
 * Remember that once the migration is applied, you also have to do `rake db:test:prepare`
 to load the new post-migration schema into the test database.
 
-
-<summary> 
+<details>
+  <summary>
   Clearly, now that a new field has been added, we will have to modify
   the Views so that the user can see and enter values for that field.
   Do we also have to modify the model file in order for the new field
@@ -101,7 +101,7 @@ to load the new post-migration schema into the test database.
   Nope.  ActiveRecord infers the columns and their data types by
   inspecting the database.  However, if we wanted to have a validation
   on that column, we'd have to specifically mention it in a
-  `validates` call.
+  <code>validates</code> call.
   </blockquote></p>
 </details>
 
@@ -113,8 +113,8 @@ to load the new post-migration schema into the test database.
   to *pass* if you re-run Cucumber, and why?
   </summary>
   <p><blockquote> 
-  Once this field is added, running `rake cucumber` should allow the
-  `Background:` steps to pass, since they just us ActiveRecord
+  Once this field is added, running <code>rake cucumber</code> should allow the
+  <code>Background:</code> steps to pass, since they just use ActiveRecord
   directly to create movies with a Director field.  But the other
   scenarios all manipulate the user interface (the views), which you
   have not yet modified, so they will still fail.
@@ -123,29 +123,30 @@ to load the new post-migration schema into the test database.
 
 Verify that the Cucumber steps you expect to pass actually do pass.
 
-
-<summary> 
+<details>
+  <summary>
   Besides modifying the Views, will we have to modify anything in the
   controller?  If so, what? 
   </summary>
   <p><blockquote> 
-  Yes: we have to add `:director` to the list of movie attributes in
-  the `def movie_params` method in `movies_controller.rb`.  Otherwise,
-  even if that value is available as `params["movie"]["director"]`, it
-  will be "scrubbed" by the `require` and `permit` calls on `params`
+  Yes: we have to add <code>:director</code> to the list of movie attributes in
+  the <code>def movie_params</code> method in <code>movies_controller.rb</code>.  Otherwise,
+  even if that value is available as <code>params["movie"]["director"]</code>, it
+  will be "scrubbed" by the <code>require</code> and <code>permit</code> calls on <code>params</code>
   before the controller actions are able to see it.
   </blockquote></p>
 </details>
 
-<summary> 
+<details>
+  <summary>
   Which controller actions, specifically, would fail to work correctly
   if we didn't make the above change?
   </summary>
   <p><blockquote> 
-  `create` and `update` would fail, since they are the ones that
-  expect a form submission in `params` in which `params["movies"]`
+  <code>create</code> and <code>update</code> would fail, since they are the ones that
+  expect a form submission in <code>params</code> in which <code>params["movies"]</code>
   should appear.  The other actions do not expect or manipulate this
-  form (and do not call the helper function `movie_params`) so they
+  form (and do not call the helper function <code>movie_params</code>) so they
   would not be affected.
   </blockquote></p>
 </details>
@@ -209,11 +210,13 @@ whose director matches that of the current movie.
 
 Verify that the Cucumber steps you expect to pass actually do pass.
 
-Note: You should write at least 2 specs for your controller: 1) When
-the specified movie has a director, it should...  2) When the
-specified movie has no director, it should ... and 2 specs for your model:
-1) it should return the correct matches for movies by the same director and 2) it should not
-return matches of movies by different directors. 
+Note: You should write at least 2 specs for your controller:
+1) When the specified movie has a director, it should...
+2) When the specified movie has no director, it should ...
+
+and 2 specs for your model:
+1) it should return the correct matches for movies by the same director and
+2) it should not return matches of movies by different directors.
 
 It's up to you to
 decide whether you want to handle the sad path of "no director" in the
