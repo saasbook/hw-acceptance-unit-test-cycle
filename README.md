@@ -58,9 +58,9 @@ bundle exec rake db:test:prepare
 db:seed` to add it.
 
 5. Double check that RSpec is correctly set up by running `rake
-spec`.  (Note--*not* `rake rspec` as you might think. Sorry.)
-Although there are no RSpec tests yet, the task should run without
-error.  
+spec`.  (Note--*not* `rake rspec` as you might think. Sorry.) We've provided a 
+couple of tests that will fail, which you can use as a starting point, in 
+`spec/models/movie_spec.rb` and `spec/controllers/movies_controller_spec.rb`.
 
 6. Double check that Cucumber is correctly set up by running `rake
 cucumber`.  We've provided a couple of scenarios that will fail,
